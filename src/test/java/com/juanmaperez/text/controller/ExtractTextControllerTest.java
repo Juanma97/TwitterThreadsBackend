@@ -1,21 +1,21 @@
 package com.juanmaperez.text.controller;
 
-import com.juanmaperez.text.service.TextService;
+import com.juanmaperez.text.service.ExtractTextService;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class TextControllerTest{
+class ExtractTextControllerTest{
     
     private final String URL = "https://www.urltest.com";
-    private final TextService textService = mock(TextService.class);
-    private final TextController sut = new TextController(textService);
+    private final ExtractTextService extractTextService = mock(ExtractTextService.class);
+    private final ExtractTextController sut = new ExtractTextController(extractTextService);
     
     @Test
     void shouldCallServiceToExtractText(){
         sut.extractText(URL); 
         
-        verify(textService).extractText(URL);
+        verify(extractTextService).extractText(URL);
     }
 }

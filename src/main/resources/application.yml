@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: Twitter Threads Backend
+    
+server:
+  port: 8100
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: ${LANGCHAIN4J_OPENAI_API_KEY}
+      model-name: gpt-3.5-turbo
+      temperature: 0.0
+      timeout: PT60S
+      log-requests: true
+      log-responses: true
+  
+  local-ai:
+    chat-model:
+      api-key: ${LANGCHAIN4J_OPENAI_API_KEY}
+      model-name: ggml-gpt4all-j
+      temperature: 0.0
+      timeout: PT60S
+      log-requests: true
+      log-responses: true
