@@ -36,8 +36,17 @@ public class AiConfig {
     }
 
     @Bean
-    public SummarizeAgent customerSupportAgent(ChatLanguageModel chatLanguageModel, ContentRetriever contentRetriever) {
+    public SummarizeAgent customerSupportSummarizeAgent(ChatLanguageModel chatLanguageModel, ContentRetriever contentRetriever) {
         return AiServices.builder(SummarizeAgent.class)
+                .chatLanguageModel(chatLanguageModel)
+                .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
+                .contentRetriever(contentRetriever)
+                .build();
+    }
+
+    @Bean
+    public ThreadsAgent customerSupportThreadsAgent(ChatLanguageModel chatLanguageModel, ContentRetriever contentRetriever) {
+        return AiServices.builder(ThreadsAgent.class)
                 .chatLanguageModel(chatLanguageModel)
                 .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
                 .contentRetriever(contentRetriever)
