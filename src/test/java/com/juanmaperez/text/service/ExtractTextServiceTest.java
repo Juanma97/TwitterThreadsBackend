@@ -1,19 +1,25 @@
 package com.juanmaperez.text.service;
 
+import com.juanmaperez.common.utils.ValidatorNotNull;
+import com.juanmaperez.common.utils.ValidatorRegex;
 import com.juanmaperez.text.extractors.WebArticlesTextExtractor;
 import com.juanmaperez.text.model.TextResponse;
 import dev.langchain4j.data.document.Document;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 class ExtractTextServiceTest{
-    
+
     private final WebArticlesTextExtractor webArticlesTextExtractor = mock(WebArticlesTextExtractor.class);
-    private final ExtractTextService sut = new ExtractTextService(webArticlesTextExtractor);
-    
+    private final ValidatorNotNull validatorNotNull = mock(ValidatorNotNull.class);
+    private final ValidatorRegex validatorRegex = mock(ValidatorRegex.class);
+    private final ExtractTextService sut = new ExtractTextService(webArticlesTextExtractor, validatorNotNull,
+            validatorRegex);
+
     @Test
     void shouldExtractTextFromURL(){
         final var url = "https://example.com";

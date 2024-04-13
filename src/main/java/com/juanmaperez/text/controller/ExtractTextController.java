@@ -21,7 +21,6 @@ public class ExtractTextController{
     
     @GetMapping (produces = "application/json")
     public TextResponse extractText(@RequestParam("url") final String url){
-        // TODO: Validar notNull URL y regex
         return extractTextService.extractText(url);
     }
 }
