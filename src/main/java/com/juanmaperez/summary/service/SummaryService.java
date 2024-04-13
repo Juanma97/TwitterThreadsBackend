@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SummaryService{
-    private final String AGENT_ACTION = "Resume el siguiente texto en 500 palabras en formato hilo de Twitter: ";
-    private final String ERROR = "El text a resumir no es válido, reviselo y vuelvalo a intentar por favor";
+    private final String AGENT_ACTION = "Resume el siguiente texto en 500 palabras exactas";
+    private final String ERROR = "El texto a resumir no es válido, reviselo y vuelvalo a intentar por favor";
     private final ValidatorNotNull validatorNotNull;
     private final SummarizeAgent summarizeAgent;
 
