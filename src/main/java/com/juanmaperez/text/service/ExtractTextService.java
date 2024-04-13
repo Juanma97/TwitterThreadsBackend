@@ -4,6 +4,7 @@ import com.juanmaperez.common.utils.ValidatorNotNull;
 import com.juanmaperez.common.utils.ValidatorRegex;
 import com.juanmaperez.text.extractors.WebArticlesTextExtractor;
 import com.juanmaperez.text.model.TextResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class ExtractTextService{
     private final ValidatorNotNull validatorNotNull;
     private final ValidatorRegex validatorRegex;
 
+    @Autowired
     public ExtractTextService(final WebArticlesTextExtractor webArticlesTextExtractor,
             final ValidatorNotNull validatorNotNull, final ValidatorRegex validatorRegex){
         this.webArticlesTextExtractor = webArticlesTextExtractor;
