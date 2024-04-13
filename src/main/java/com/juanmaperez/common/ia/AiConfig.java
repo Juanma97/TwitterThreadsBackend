@@ -10,7 +10,6 @@ import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
 import dev.langchain4j.service.AiServices;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 @Configuration
 @EnableConfigurationProperties(LocalAiProperties.class)
@@ -38,8 +36,8 @@ public class AiConfig {
     }
 
     @Bean
-    public TwitterThreadsAgent customerSupportAgent(ChatLanguageModel chatLanguageModel, ContentRetriever contentRetriever) {
-        return AiServices.builder(TwitterThreadsAgent.class)
+    public SummarizeAgent customerSupportAgent(ChatLanguageModel chatLanguageModel, ContentRetriever contentRetriever) {
+        return AiServices.builder(SummarizeAgent.class)
                 .chatLanguageModel(chatLanguageModel)
                 .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
                 .contentRetriever(contentRetriever)

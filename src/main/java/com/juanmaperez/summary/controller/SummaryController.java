@@ -3,7 +3,8 @@ package com.juanmaperez.summary.controller;
 import com.juanmaperez.summary.model.SummarizeResponse;
 import com.juanmaperez.summary.service.SummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +19,8 @@ public class SummaryController{
         this.summaryService = summaryService;
     }
 
-    @GetMapping(produces = "application/json")
-    public SummarizeResponse summarize(final String text){
+    @PostMapping(produces = "application/json")
+    public SummarizeResponse summarize(@RequestBody final String text){
         return summaryService.summarize(text);
     }
 }
